@@ -1,6 +1,12 @@
 # Vercel Purge
 
-A command-line tool to clean up [Vercel](https://vercel.com/) deployments by removing all unused deployments from selected projects.
+## About
+
+A command-line tool to clean up [Vercel](https://vercel.com/) deployments by removing all deployments from selected projects.
+
+Vercel's default behavior is to retain all deployments indefinitely, including preview deployments, to facilitate features like instant rollbacks and historical references. While this ensures accessibility, it can lead to deployment sprawl and potential security concerns with old versions remaining accessible.
+
+Managing these accumulated deployments manually through the web interface is time-consuming and impractical for projects with many deployments. `vercel_purge` automates this cleanup process, providing a simple command-line interface to bulk-remove deployments from your Vercel projects.
 
 ## Installation
 
@@ -25,16 +31,16 @@ Follow the prompts to log in to your Vercel account. This only needs to be done 
 ### Basic Usage
 
 ```bash
-# Interactive mode - pick a project from the list
+# complete interactive mode (user controlled/input)
 vercel_purge
 
-# Remove all deployments from a specific project
+# remove all deployments from a specific project
 vercel_purge --project my-project
 
-# Remove all deployments from ALL projects (with confirmation)
+# remove all deployments from ALL projects (with confirmation)
 vercel_purge --project all
 
-# Skip confirmation prompts
+# skip confirmation prompts
 vercel_purge --project all --force
 ```
 
@@ -48,19 +54,19 @@ vercel_purge --project all --force
 ### Examples
 
 ```bash
-# List all your Vercel projects
+# list all your Vercel projects
 vercel_purge --list
 
-# Check status of all projects
+# check status of all projects
 vercel_purge --status
 
-# Check status of specific project
+# check status of specific project
 vercel_purge --status --project my-app
 
-# Clean up specific project without prompts
+# clean up specific project without prompts
 vercel_purge --project my-app --force
 
-# Nuclear option - remove ALL deployments from ALL projects
+# remove all deployments from all projects
 vercel_purge --project all --force
 ```
 
@@ -76,3 +82,7 @@ vercel_purge --project all --force
 ```bash
 ./uninstall.sh
 ```
+
+## License
+
+This project is licensed under the **GNU General Public License v3.0** and see the [LICENSE](LICENSE) file for details.
